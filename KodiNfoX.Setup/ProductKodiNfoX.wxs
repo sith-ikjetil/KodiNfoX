@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Kodi Nfo X" Language="1033" Version="1.7.0.0" Manufacturer="Solberg IT Software" UpgradeCode="a0ae30fd-b617-4821-894b-125c54adb815">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <MajorUpgrade Schedule="afterInstallInitialize" DowngradeErrorMessage="A later version of [ProductName] is already installed." AllowSameVersionUpgrades="yes"/>
+    
+    <PropertyRef Id="NETFRAMEWORK45" />
+
+    <Condition Message="This application requires .NET Framework 4.5 Full. Please install the .NET Framework then run this installer again.">
+      <![CDATA[Installed OR NETFRAMEWORK45]]>
+    </Condition>
+
+    <!-- Condition Message='This setup requires .NET Runtime 4.0 and .NET Framework 4.5.'>
+      <![CDATA[MsiNetAssemblySupport >= "4.0.30319"]]>
+    </Condition -->
+
+    <Icon Id="movies.ico" SourceFile="42_movies.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="movies.ico" />
+    <!-- Property Id="ALLUSERS" Value="1" / -->
+
+    <WixVariable Id="WixUIBannerBmp" Value="Banner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="BannerFront.bmp"/>
+
+    <!--
+    <Binary Id="CaseFlowCustomAction.dll" SourceFile="C:\Projects\It Software\ItSoftware.CaseFlow\Release\CaseFlowCustomAction.dll" />
+    <CustomAction Id="ExecuteInstallUtil" Impersonate="no" BinaryKey="CaseFlowCustomAction.dll" DllEntry="ExecuteInstallUtil" Execute="deferred" />
+    <CustomAction Id="ExecuteInstallUtil.SetProperty" Return="check"  Property="ExecuteInstallUtil" Value="/T=&quot;[TARGETDIR]\&quot;;/A=&quot;[ADMINDIR]\&quot;" />
+    -->
+    <Media Id="1" Cabinet="kodinfox.cab" EmbedCab="yes" />
+
+    <!--
+    <InstallExecuteSequence>
+      <Custom Action="ExecuteInstallUtil.SetProperty" Before="InstallFinalize" />
+      <Custom Action="ExecuteInstallUtil" After="ExecuteInstallUtil.SetProperty">NOT Installed AND NOT PATCH</Custom>
+    </InstallExecuteSequence>
+    -->
+
+    <!-- Step 1: Define the directory structure -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder" Name="PFDir">
+        <Directory Id="APPLICATIONROOTDIRECTORY"  Name="IT Software" ComponentGuidGenerationSeed="A5A486BB-7F73-4D56-B644-4E9465BEE69C">
+          <Directory Id="KODINFOXDIR" Name="KodiNfoX">
+            <!-- Directory Id="HANDLERSDIR" Name="Handlers"/ -->
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder" Name="PMFolder">
+        <Directory Id="KodiNfoXFolder" Name="IT Software">
+          <Component Id="KodiNfoXFolderComponent" Guid="AA8DA91D-8161-4EDB-9B27-AEAB03818EE6">
+            <RemoveFolder Id='KodiNfoXFolder' On='uninstall'/>
+            <RegistryValue Root='HKCU' Key='SOFTWARE\KodiNfoX\KodiNfoX'
+                        Type='string' Value='Hello World'
+                        KeyPath='yes' />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <!-- Step 2: Add files to your installer package -->
+    <DirectoryRef Id="KODINFOXDIR">
+      <Component Id="KodiNfoX.Application" Guid="B18D6AB2-F8AA-47DF-A066-9BBB7ECADE1F">
+        <File Id="KodiNfoX.Application.exe" Name="KodiNfoX.Application.exe" Vital="yes" AssemblyApplication="KodiNfoX.Application.exe" Assembly=".net" Source="$(sys.CURRENTDIR)..\KodiNfoX.Application\bin\Release\KodiNfoX.Application.exe" KeyPath="yes" Checksum="yes"/>
+        <File Id="KodiNfoX.Application.exe.config" Name="KodiNfoX.Application.exe.config" Vital="yes" Source="$(sys.CURRENTDIR)..\KodiNfoX.Application\bin\Release\KodiNfoX.Application.exe.config" Checksum="no"/>
+        <!-- ServiceControl Id='ItSoftware.CaseFlow.Admin.ServiceControl' Name='ItSoftware.CaseFlow.Admin.exe.ServiceControl' Stop='uninstall' Remove='uninstall' / -->
+      </Component>
+      <Component Id="KodiNfoX.ShortCut">
+        <Shortcut Id="KodiNfoXShortcut"
+                     Directory="KodiNfoXFolder"
+                     Name="KodiNfoX"
+                     Target="[KODINFOXDIR]KodiNfoX.Application.exe"
+                     WorkingDirectory="KODINFOXDIR"
+                     Description="KodiNfoX Application" />
+        <RegistryValue Root="HKCU" Key="Software\KodiNfoX\KodiNfoXn" Name="installed" Type="integer" Value="1"/>
+      </Component>
+      <Component Id="R_Hasseware.Net.TMDb" Guid="6BB0EB72-8627-4599-AD3B-2FDCB6F35CFF">
+        <File Id="R_Hasseware.Net.TMDb.dll"  Name="Hasseware.Net.TMDb.dll"  Vital="yes" Source="$(sys.CURRENTDIR)..\KodiNfoX.Application\bin\Release\Hasseware.Net.TMDb.dll" KeyPath="yes" Checksum="no" Assembly=".net"  AssemblyApplication="KodiNfoX.Application.exe" />
+      </Component>
+      <Component Id="R_ItSoftware.String" Guid="A0B6E101-A80A-47C9-BE37-A4F5BE25AB4D">
+        <File Id="R_ItSoftware.String.dll"  Name="ItSoftware.String.dll"  Vital="yes" Source="$(sys.CURRENTDIR)..\KodiNfoX.Application\bin\Release\ItSoftware.String.dll" KeyPath="yes" Checksum="no" Assembly=".net"  AssemblyApplication="KodiNfoX.Application.exe" />
+      </Component>
+      <Component Id="R_Newtonsoft.Json" Guid="57EFFB7B-A640-43CF-994F-C2E200D861E4">
+        <File Id="R_Newtonsoft.Json.dll"  Name="Newtonsoft.Json.dll"  Vital="yes" Source="$(sys.CURRENTDIR)..\KodiNfoX.Application\bin\Release\Newtonsoft.Json.dll" KeyPath="yes" Checksum="no" Assembly=".net"  AssemblyApplication="KodiNfoX.Application.exe" />
+      </Component>      
+      <Component Id="R_Telerik.Windows.Controls" Guid="7FD0F0B1-FA79-44E9-BBFA-AE1D9AE9DE44">
+        <File Id="R_Telerik.Windows.Controls.dll"  Name="Telerik.Windows.Controls.dll"  Vital="yes" Source="$(sys.CURRENTDIR)..\KodiNfoX.Application\bin\Release\Telerik.Windows.Controls.dll" KeyPath="yes" Checksum="no" Assembly=".net"  AssemblyApplication="KodiNfoX.Application.exe" />
+      </Component>
+      <Component Id="R_Telerik.Windows.Controls.Input" Guid="29E93E99-0FB3-4869-B4A5-1812111532B2">
+        <File Id="R_Telerik.Windows.Controls.Input.dll"  Name="Telerik.Windows.Controls.Input.dll"  Vital="yes" Source="$(sys.CURRENTDIR)..\KodiNfoX.Application\bin\Release\Telerik.Windows.Controls.Input.dll" KeyPath="yes" Checksum="no" Assembly=".net"  AssemblyApplication="KodiNfoX.Application.exe" />
+      </Component>
+      <Component Id="R_Telerik.Windows.Controls.Navigation" Guid="71B33F3E-51F1-4C39-9BDD-13ABE7D0D9AD">
+        <File Id="R_Telerik.Windows.Controls.Navigation.dll"  Name="Telerik.Windows.Controls.Navigation.dll"  Vital="yes" Source="$(sys.CURRENTDIR)..\KodiNfoX.Application\bin\Release\Telerik.Windows.Controls.Navigation.dll" KeyPath="yes" Checksum="no" Assembly=".net"  AssemblyApplication="KodiNfoX.Application.exe" />
+      </Component>
+      <Component Id="R_Telerik.Windows.Controls.RibbonView" Guid="8401458B-F520-4116-BE81-9815A623D681">
+        <File Id="R_Telerik.Windows.Controls.RibbonView.dll"  Name="Telerik.Windows.Controls.RibbonView.dll"  Vital="yes" Source="$(sys.CURRENTDIR)..\KodiNfoX.Application\bin\Release\Telerik.Windows.Controls.RibbonView.dll" KeyPath="yes" Checksum="no" Assembly=".net"  AssemblyApplication="KodiNfoX.Application.exe" />
+      </Component>
+      <Component Id="R_Telerik.Windows.Data" Guid="DA979867-0E19-45C2-B30C-AAAF89B0C231">
+        <File Id="R_Telerik.Windows.Data.dll"  Name="Telerik.Windows.Data.dll"  Vital="yes" Source="$(sys.CURRENTDIR)..\KodiNfoX.Application\bin\Release\Telerik.Windows.Data.dll" KeyPath="yes" Checksum="no" Assembly=".net"  AssemblyApplication="KodiNfoX.Application.exe" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- Step 3: Tell WiX to install the files -->
+    <Feature Id="MainApplication" Title="KodiNfoX Application" ConfigurableDirectory="KODINFOXDIR" Description="KodiNfoX Application" TypicalDefault="install" InstallDefault="local" Level="1">
+      <ComponentRef Id="KodiNfoXFolderComponent"/>
+      <ComponentRef Id="KodiNfoX.ShortCut"/>
+      <ComponentRef Id="KodiNfoX.Application" />
+      <ComponentRef Id="R_Hasseware.Net.TMDb" />
+      <ComponentRef Id="R_ItSoftware.String" />
+      <ComponentRef Id="R_Newtonsoft.Json" />            
+      <ComponentRef Id="R_Telerik.Windows.Controls" />
+      <ComponentRef Id="R_Telerik.Windows.Controls.Input" />
+      <ComponentRef Id="R_Telerik.Windows.Controls.Navigation" />
+      <ComponentRef Id="R_Telerik.Windows.Controls.RibbonView" />
+      <ComponentRef Id="R_Telerik.Windows.Data" />
+    </Feature>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="TARGETDIR"/>
+
+
+    <Property Id="VSDSupportedRuntimes" Value="4.0.30319" />
+
+    <UIRef Id="WixUI_Minimal"/>
+    <!-- Mondo -->
+    <UIRef Id="WixUI_ErrorProgressText" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+  </Product>
+</Wix>
