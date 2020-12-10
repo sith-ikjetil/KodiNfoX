@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "KodiNfoX.Setup", "KodiNfoX.Setup\KodiNfoX.Setup.wixproj", "{F724B1EC-FD1A-485D-AA3F-2FA45C0E9314}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ItSoftware.Core", "ItSoftware.Core", "{2057CD69-F546-4E23-9DF9-6AB6079FFB48}"
+	ProjectSection(SolutionItems) = preProject
+		ItSoftware.Core\ICSharpCode.SharpZipLib.dll = ItSoftware.Core\ICSharpCode.SharpZipLib.dll
+		ItSoftware.Core\ItSoftware.Core.dll = ItSoftware.Core\ItSoftware.Core.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KodiNfoX", "KodiNfoX\KodiNfoX.csproj", "{8E5D9FA1-AED6-4F8F-A06B-CC1A700891ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F724B1EC-FD1A-485D-AA3F-2FA45C0E9314}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{F724B1EC-FD1A-485D-AA3F-2FA45C0E9314}.Debug|x86.ActiveCfg = Debug|x86
+		{F724B1EC-FD1A-485D-AA3F-2FA45C0E9314}.Debug|x86.Build.0 = Debug|x86
+		{F724B1EC-FD1A-485D-AA3F-2FA45C0E9314}.Release|Any CPU.ActiveCfg = Release|x86
+		{F724B1EC-FD1A-485D-AA3F-2FA45C0E9314}.Release|x86.ActiveCfg = Release|x86
+		{F724B1EC-FD1A-485D-AA3F-2FA45C0E9314}.Release|x86.Build.0 = Release|x86
+		{8E5D9FA1-AED6-4F8F-A06B-CC1A700891ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E5D9FA1-AED6-4F8F-A06B-CC1A700891ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E5D9FA1-AED6-4F8F-A06B-CC1A700891ED}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8E5D9FA1-AED6-4F8F-A06B-CC1A700891ED}.Debug|x86.Build.0 = Debug|Any CPU
+		{8E5D9FA1-AED6-4F8F-A06B-CC1A700891ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E5D9FA1-AED6-4F8F-A06B-CC1A700891ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E5D9FA1-AED6-4F8F-A06B-CC1A700891ED}.Release|x86.ActiveCfg = Release|Any CPU
+		{8E5D9FA1-AED6-4F8F-A06B-CC1A700891ED}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09B621EF-8AA2-4A28-86DE-D50CF52F3316}
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

@@ -28,11 +28,10 @@
     <Compile Include="ProductKodiNfoX.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="42_movies.ico" />
+    <Content Include="KodiNfoX.ico" />
     <Content Include="Banner.bmp" />
     <Content Include="BannerFront.bmp" />
     <Content Include="License.rtf" />
-    <Content Include="Setup-Sign.bat" />
   </ItemGroup>
   <ItemGroup>
     <WixExtension Include="WixUtilExtension">
@@ -50,8 +49,7 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
-    <PostBuildEvent>cd $(ProjectDir)
-Setup-Sign.bat</PostBuildEvent>
+    <PostBuildEvent />
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.

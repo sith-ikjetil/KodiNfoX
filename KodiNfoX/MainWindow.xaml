@@ -1,0 +1,57 @@
+﻿<Window x:Class="KodiNfoX.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KodiNfoX"
+        mc:Ignorable="d"
+        Title="Kodi Nfo X" Height="450" Width="800">
+    <DockPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="LightGray">
+            <StackPanel Orientation="Vertical" Margin="10 0 0 0">
+                <Label x:Name="LabelRootFolder" Content="Root Folder"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="TextBoxRootFolder" Text="\\NAS\Files\Movies\" Width="250"/>
+                    <Button x:Name="ButtonSelectRootFolder" Content="..." Width="20" Margin="10 0 0 0" Click="ButtonSelectRootFolder_Click"/>
+                </StackPanel>
+                <Label x:Name="LabelFilenameFilter" Content="Filename Filter"/>
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox x:Name="ComboBoxFilter" IsEditable="True" Width="280" SelectedIndex="0">
+                        <ComboBox.Items>
+                            <ComboBoxItem Content="[[year]]-[[title]].[[ext]]"/>
+                            <ComboBoxItem Content="[[title]] ([[year]]).[[ext]]"/>
+                        </ComboBox.Items>
+                    </ComboBox>
+                </StackPanel>
+                <Label Content=" " Height="10"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10 0 0 0">
+                <Label Content="Valid File Type Extensions"/>
+                <TextBox x:Name="TextBoxExtensions" Width="260" Text="mkv;mp4;avi;wmv;mpeg"/>
+                <CheckBox x:Name="CheckBoxReplaceExisting" IsChecked="False" Content="Replace Existing" Margin="0 5 0 0"/>
+                <ProgressBar x:Name="BusyIndicator" IsIndeterminate="True" IsEnabled="False" Visibility="Collapsed" Margin="0 5 0 0" Width="260"/>
+                <Label x:Name="LabelBusyIndicator" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10 0 0 0">
+                <Label Content="UserName"/>
+                <TextBox x:Name="TextBoxUserName" Width="110" Text="guest"/>
+                <Label Content="Password"/>
+                <PasswordBox x:Name="TextBoxPassword" Width="110" Password=""/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10 0 0 0">
+                <Label Content="Actions"/>
+                <Button x:Name="ButtonCreateNfo" Width="80" Content="Create Nfo" Click="ButtonCreateNfo_Click"/>
+                <Button x:Name="ButtonDeleteNfo" Width="80" Content="Delete Nfo" Margin="0 5 0 0" Click="ButtonDeleteNfo_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <RichTextBox x:Name="RichTextBoxStatus" Block.LineHeight="1" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+            <RichTextBox.ContextMenu>
+                <ContextMenu x:Name="ContextMenuRichTextBoxStatus">
+                    <MenuItem x:Name="MenuItemStatusSelectAll" Click="MenuItemStatusSelectAll_Click" Header="Select All"/>
+                    <MenuItem x:Name="MenuItemStatusCopy" Command="Copy" Header="Copy"/>
+                    <MenuItem x:Name="MenuItemStatusPaste" Command="Paste" Header="Paste"/>
+                </ContextMenu>
+            </RichTextBox.ContextMenu>
+        </RichTextBox>
+    </DockPanel>
+</Window>
