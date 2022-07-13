@@ -8,11 +8,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("KodiNfoX")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Kodi .nfo file automatic creator.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("SOLBERG IT SOFTWARE")]
 [assembly: AssemblyProduct("KodiNfoX")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright © Kjetil Kristoffer Solberg 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

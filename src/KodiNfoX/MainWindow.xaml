@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KodiNfoX"
         mc:Ignorable="d"
-        Title="Kodi Nfo X" Height="450" Width="800">
+        Title="Kodi Nfo X - by Kjetil Kristoffer Solberg" Height="450" Width="800">
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="LightGray">
             <StackPanel Orientation="Vertical" Margin="10 0 0 0">
