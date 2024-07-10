@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="Kodi Nfo X" Language="1033" Version="1.0.1.2" Manufacturer="Solberg IT Software" UpgradeCode="a0ae30fd-b617-4821-894b-125c54adb815">
+	<Product Id="*" Name="Kodi Nfo X" Language="1033" Version="1.0.2.0" Manufacturer="Solberg IT Software" UpgradeCode="a0ae30fd-b617-4821-894b-125c54adb815">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
     <MajorUpgrade Schedule="afterInstallInitialize" DowngradeErrorMessage="A later version of [ProductName] is already installed." AllowSameVersionUpgrades="yes"/>
     
@@ -78,9 +78,9 @@
       <Component Id="R_ItSoftware.Core" Guid="A0B6E101-A80A-47C9-BE37-A4F5BE25AB4D">
         <File Id="R_ItSoftware.Core.dll"  Name="ItSoftware.Core.dll"  Vital="yes" Source="$(sys.CURRENTDIR)..\KodiNfoX\bin\Release\ItSoftware.Core.dll" KeyPath="yes" Checksum="no" Assembly=".net"  AssemblyApplication="KodiNfoX.exe" />
       </Component>
-      <Component Id="R_Newtonsoft.Json" Guid="57EFFB7B-A640-43CF-994F-C2E200D861E4">
+		<!--Component Id="R_Newtonsoft.Json" Guid="57EFFB7B-A640-43CF-994F-C2E200D861E4">
         <File Id="R_Newtonsoft.Json.dll"  Name="Newtonsoft.Json.dll"  Vital="yes" Source="$(sys.CURRENTDIR)..\KodiNfoX\bin\Release\Newtonsoft.Json.dll" KeyPath="yes" Checksum="no" Assembly=".net"  AssemblyApplication="KodiNfoX.exe" />
-      </Component>      
+      </Component-->      
       <Component Id="R_ICSharpCode.SharpZipLib" Guid="7FD0F0B1-FA79-44E9-BBFA-AE1D9AE9DE44">
         <File Id="R_ICSharpCode.SharpZipLib.dll"  Name="R_ICSharpCode.SharpZipLib.dll"  Vital="yes" Source="$(sys.CURRENTDIR)..\KodiNfoX\bin\Release\ICSharpCode.SharpZipLib.dll" KeyPath="yes" Checksum="no" Assembly=".net"  AssemblyApplication="KodiNfoX.exe" />
       </Component>
@@ -93,7 +93,7 @@
       <ComponentRef Id="KodiNfoX.Application" />
       <ComponentRef Id="R_Hasseware.Net.TMDb" />
       <ComponentRef Id="R_ItSoftware.Core" />
-      <ComponentRef Id="R_Newtonsoft.Json" />            
+	    <!-- ComponentRef Id="R_Newtonsoft.Json" / -->            
       <ComponentRef Id="R_ICSharpCode.SharpZipLib" />
     </Feature>
 

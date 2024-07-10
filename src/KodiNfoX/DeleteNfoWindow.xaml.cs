@@ -40,6 +40,7 @@ namespace KodiNfoX
         {
             return new DeleteNfoParams()
             {
+                DeleteAll = this.RadioButtonAll.IsChecked.Value,
                 Actor = (this.checkBoxActor.IsChecked.HasValue) ? this.checkBoxActor.IsChecked.Value : false,
                 Director = (this.checkBoxDirector.IsChecked.HasValue) ? this.checkBoxDirector.IsChecked.Value : false,
                 Genre = (this.checkBoxGenre.IsChecked.HasValue) ? this.checkBoxGenre.IsChecked.Value : false,

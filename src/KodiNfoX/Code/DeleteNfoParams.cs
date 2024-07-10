@@ -8,6 +8,7 @@ namespace KodiNfoX.Code
 {
     public class DeleteNfoParams
     {
+        public bool DeleteAll = false;
         public bool Actor = false;
         public bool Director = false;
         public bool Genre = false;

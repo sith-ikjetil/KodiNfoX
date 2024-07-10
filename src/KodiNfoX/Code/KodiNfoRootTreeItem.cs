@@ -650,7 +650,7 @@ namespace KodiNfoX.Code
             {
                 XDocument xd = XDocument.Load(pathAndFile);
 
-                if (KodiNfoXml.CheckForMissingInformation(xd, deleteNfoParams))
+                if (deleteNfoParams.DeleteAll || KodiNfoXml.CheckForMissingInformation(xd, deleteNfoParams))
                 {
                     File.Delete(pathAndFile);
                     Log.WriteInformation(string.Format("DELETION of NFO file {0} SUCCEEDED", pathAndFile));

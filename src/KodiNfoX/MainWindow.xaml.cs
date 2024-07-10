@@ -24,7 +24,9 @@ namespace KodiNfoX
 		{
 			InitializeComponent();
             Log.MainWindow = this;
-		}
+            
+            this.Title = $"Kodi Nfo X - by Kjetil Kristoffer Solberg | v{System.Diagnostics.Process.GetCurrentProcess().MainModule.FileVersionInfo.FileVersion}";
+        }
 
 		#region Private Methods
         /// <summary>
