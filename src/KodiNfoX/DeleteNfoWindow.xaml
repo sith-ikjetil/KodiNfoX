@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KodiNfoX"
         mc:Ignorable="d"
-        Title="Delete Nfo Files" Height="290" Width="300" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner">
+        Title="Delete Nfo Files" Height="290" Width="310" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Horizontal">

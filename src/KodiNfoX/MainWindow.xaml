@@ -28,7 +28,7 @@
             <StackPanel Orientation="Vertical" Margin="10 0 0 0">
                 <Label Content="Valid File Type Extensions"/>
                 <TextBox x:Name="TextBoxExtensions" Width="260" Text="mkv;mp4;avi;wmv;mpeg"/>
-                <CheckBox x:Name="CheckBoxReplaceExisting" IsChecked="False" Content="Replace Existing" Margin="0 5 0 0"/>
+                <CheckBox x:Name="CheckBoxReplaceExisting" IsChecked="False" Content="Replace Existing .nfo Files" Margin="0 5 0 0"/>
                 <ProgressBar x:Name="BusyIndicator" IsIndeterminate="True" IsEnabled="False" Visibility="Collapsed" Margin="0 5 0 0" Width="260"/>
                 <Label x:Name="LabelBusyIndicator" Content=""/>
             </StackPanel>
